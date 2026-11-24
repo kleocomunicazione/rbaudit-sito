@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="https://static.wixstatic.com/media/a71da6_23eccc43f9c54750ae52e0781dd586ce~mv2.png">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>RB Audit Italia</title>
+<meta name="description" content="RB Audit Italia S.r.l. – Revisione legale e contabile, organizzazione e consulenza, compliance e modelli 231. Roma EUR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: griglia a quadrati presa dal mosaico del logo — moduli quadrati, righe sottili, blu del marchio su bianco freddo */
+:root{
+  --paper:#F5F8FB; --surface:#FFFFFF; --ink:#0D2540; --ink-2:#56697F; --rule:#DCE5EE;
+  --brand:#0A5FA6; --brand-ink:#FFFFFF; --cyan:#1C9AD6; --sky:#6FAEDF; --mist:#A9CBE8; --pale:#E6F0F9;
+  --band:#0B2A4A; --on-band:#EAF1F8; --on-band-2:#A7BCD3; --band-rule:#1F4469;
+  --logo-rb:#0A5FA6; --logo-text:#5B7189; --err:#B3261E;
+  --f-display:"Michroma", "Eurostile", "Microgramma", "Arial Black", sans-serif;
+  --f-body:"Manrope", "Segoe UI", system-ui, sans-serif;
+  --max:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.45rem,2.7vw,2.15rem);line-height:1.2;letter-spacing:-.01em}
+h3{font-size:1.02rem;line-height:1.35;letter-spacing:.01em}
+p{margin:0}
+.label{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brand)}
+.label::before{content:"";width:10px;height:10px;background:var(--cyan);flex:none}
+.lead{font-size:1.12rem;color:var(--ink-2);max-width:62ch}
+section{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px 64px;align-items:end;margin-bottom:52px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr}}
+.sec-head>div{display:grid;gap:18px;justify-items:start}
+
+/* logo */
+.logo{display:block;height:56px;width:auto}
+.brand{padding:4px 6px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:12px}
+.brand{display:block;text-decoration:none}
+nav.main{display:flex;gap:28px;align-items:center}
+nav.main a{text-decoration:none;font-size:.95rem;font-weight:500;color:var(--ink-2)}
+nav.main a:hover{color:var(--brand)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 .95rem var(--f-body);padding:13px 22px;border-radius:0;border:1px solid var(--brand);background:var(--brand);color:var(--brand-ink)!important;text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--brand)!important}
+.btn.ghost{background:transparent;color:var(--ink)!important;border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)!important}
+.btn:disabled{opacity:.5;cursor:default}
+.menu-btn{display:none;background:none;border:1px solid var(--rule);color:var(--ink);padding:8px 12px;font:600 .85rem var(--f-body);cursor:pointer}
+@media (max-width:1100px){
+  .menu-btn{display:block}
+  nav.main{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:8px max(20px, env(safe-area-inset-right,0px)) 20px max(20px, env(safe-area-inset-left,0px))}
+  nav.main a{padding:12px 0;border-bottom:1px solid var(--rule)}
+  nav.main .btn{margin-top:16px;justify-content:center;border-bottom:1px solid var(--brand)}
+  nav.main:not(.open){display:none}
+}
+@media (max-width:420px){.logo{height:44px}}
+
+/* hero */
+.hero{padding-block:clamp(48px,7vw,96px) clamp(56px,7vw,96px);border-top:0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:56px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero h1{font-size:clamp(1.9rem,4.4vw,3.4rem);line-height:1.12;letter-spacing:-.02em;margin:22px 0 26px}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.mosaic{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr));aspect-ratio:1/1;max-width:440px;width:100%;justify-self:end}
+@media (max-width:900px){.mosaic{max-width:300px;justify-self:start}}
+.mosaic i{display:block}
+.mosaic .c1{background:var(--cyan)} .mosaic .c2{background:var(--sky)} .mosaic .c3{background:var(--mist)} .mosaic .c4{background:var(--pale)} .mosaic .c5{background:var(--brand)}
+.mosaic .tile{background:var(--surface);border:1px solid var(--rule);grid-column:span 3;grid-row:span 2;padding:18px 20px;display:grid;align-content:center;gap:4px}
+.mosaic .tile b{font-family:var(--f-display);font-weight:400;font-size:clamp(.78rem,1.4vw,.95rem);color:var(--ink)}
+.mosaic .tile span{font-size:.85rem;color:var(--ink-2);line-height:1.4}
+@media (max-width:900px){.mosaic .tile span{display:none}}
+
+/* chi siamo */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px 72px;align-items:start}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+.about p+p{margin-top:18px}
+.about .quote{font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.45;font-weight:500;color:var(--ink);border-left:10px solid var(--brand);padding-left:24px}
+
+/* servizi */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+@media (max-width:900px){.services{grid-template-columns:1fr}}
+.svc{background:var(--surface);border:1px solid var(--rule);padding:30px 28px 32px;display:grid;gap:16px;align-content:start;position:relative}
+.svc .sq{display:flex;gap:0}
+.svc .sq i{width:16px;height:16px;display:block}
+.svc .ref{font-size:.78rem;font-weight:600;color:var(--ink-2);letter-spacing:.03em}
+.svc ul{margin:4px 0 0;padding:16px 0 0;list-style:none;display:grid;gap:9px;font-size:.95rem;color:var(--ink-2);border-top:1px solid var(--rule)}
+.svc li{padding-left:18px;position:relative}
+.svc li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--cyan)}
+
+/* perché */
+.why{background:var(--band);color:var(--on-band);border-top:0}
+.why .label{color:var(--sky)} .why .label::before{background:var(--sky)}
+.why .lead{color:var(--on-band-2)}
+.why-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--band-rule)}
+@media (max-width:900px){.why-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.why-grid{grid-template-columns:1fr}}
+.why-item{padding:30px 28px 30px 0;display:grid;gap:12px;align-content:start}
+.why-item+.why-item{padding-left:28px;border-left:1px solid var(--band-rule)}
+@media (max-width:900px){.why-item,.why-item+.why-item{padding:26px 20px 26px 0;border-left:0;border-bottom:1px solid var(--band-rule)}}
+.why-item .ic{display:grid;grid-template-columns:repeat(2,12px);gap:0;margin-bottom:6px}
+.why-item .ic i{width:12px;height:12px;display:block}
+.why-item .k{font-family:var(--f-display);font-size:.98rem;color:var(--on-band);line-height:1.4}
+.why-item p{color:var(--on-band-2);font-size:.95rem}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.team{grid-template-columns:1fr}}
+.person{background:var(--surface);border:1px solid var(--rule);padding:24px;display:grid;gap:14px;align-content:start}
+.avatar{width:72px;height:72px;background:var(--pale);color:var(--brand);display:grid;place-items:center;font-family:var(--f-display);font-size:1.1rem;position:relative}
+.avatar::after{content:"";position:absolute;right:-12px;top:-12px;width:12px;height:12px;background:var(--cyan)}
+.person .role{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.person p{font-size:.95rem;color:var(--ink-2)}
+.ph{border-bottom:1px dashed var(--ink-2);justify-self:start}
+
+/* FAQ */
+.faq{max-width:880px;border-top:2px solid var(--brand)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 48px 22px 0;position:relative;font-size:1.12rem;font-weight:600;line-height:1.4}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:18px;width:28px;height:28px;display:grid;place-items:center;background:var(--pale);color:var(--brand);font-weight:500;font-size:1.3rem;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{content:"–";background:var(--brand);color:var(--brand-ink)}
+.faq details p{padding:0 0 24px;color:var(--ink-2);max-width:68ch}
+
+/* contatti */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+form.card{background:var(--surface);border:1px solid var(--rule);border-top:4px solid var(--brand);padding:clamp(24px,4vw,40px);display:grid;gap:20px}
+.field{display:grid;gap:8px}
+.field label{font-size:.85rem;font-weight:600}
+.field input,.field textarea,.field select{font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:0;padding:12px 14px;width:100%}
+.field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--cyan);outline-offset:0;border-color:transparent}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+@media (max-width:540px){.two{grid-template-columns:1fr}}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--ink-2)}
+.check input{margin-top:4px;accent-color:var(--brand)}
+.check a{color:var(--brand)}
+.err{color:var(--err);font-size:.88rem;font-weight:600}
+.done{background:var(--pale);border-left:4px solid var(--brand);padding:16px 18px;font-size:.95rem}
+.info{display:grid;border-top:2px solid var(--brand)}
+.info .item{padding:22px 0;border-bottom:1px solid var(--rule);display:grid;gap:6px;justify-items:start}
+.info .big{font-family:var(--f-display);font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.4;user-select:all;word-break:break-word}
+.info small{color:var(--ink-2);font-size:.9rem}
+.linkish{background:none;border:0;padding:0;font:600 .85rem var(--f-body);color:var(--brand);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+footer{background:var(--band);color:var(--on-band-2);font-size:.9rem}
+footer .wrap{padding-block:52px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+@media (max-width:820px){footer .wrap{grid-template-columns:1fr}}
+footer .logo{height:52px;background:#fff;padding:10px 14px;box-sizing:content-box}
+
+footer a{color:var(--on-band)}
+footer .legal{font-size:.82rem;letter-spacing:.03em;font-variant-numeric:tabular-nums}
+footer p+p{margin-top:6px}
+
+/* dettaglio servizi */
+.more{border-top:1px solid var(--rule)}
+.more summary{cursor:pointer;font-weight:700;font-size:.9rem;color:var(--brand);padding:14px 0 0;list-style:none}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"  +"}
+.more[open] summary::after{content:"  –"}
+.more>*:not(summary){margin-top:14px}
+.more ul{border-top:0;padding-top:0}
+.more p:not(.sub){color:var(--ink-2);font-size:.95rem}
+.sub{font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.defs{margin:0;display:grid;gap:14px}
+.defs dt{font-weight:700;font-size:.95rem}
+.defs dd{margin:2px 0 0;color:var(--ink-2);font-size:.95rem}
+/* settori */
+.sectors{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.sectors li{aspect-ratio:1/1;max-width:100%;min-width:0;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:18px;display:flex;align-items:flex-end;font-weight:600;font-size:.98rem;line-height:1.3;position:relative;background:var(--surface);transition:background .2s}
+.sectors li::before{content:"";position:absolute;top:18px;left:18px;width:12px;height:12px;background:var(--mist)}
+.sectors li:nth-child(3n+1)::before{background:var(--cyan)}
+.sectors li:nth-child(3n+2)::before{background:var(--sky)}
+.sectors li:hover{background:var(--pale)}
+@media (max-width:900px){.sectors{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:540px){.sectors{grid-template-columns:repeat(2,minmax(0,1fr))}.sectors li{aspect-ratio:auto;min-height:118px;font-size:.92rem;padding:16px}.sectors li::before{top:16px;left:16px}}
+/* clienti */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{font:600 .88rem var(--f-body);padding:9px 14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer;border-radius:0}
+.chip span{color:var(--ink-2);font-weight:500;margin-left:4px;font-variant-numeric:tabular-nums}
+.chip:hover{border-color:var(--brand)}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.chip[aria-pressed="true"] span{color:inherit;opacity:.8}
+.clients-wrap{overflow-x:auto;border-top:2px solid var(--brand)}
+table.clients{width:100%;border-collapse:collapse;font-size:.95rem}
+.clients th{text-align:left;font-family:var(--f-display);font-weight:400;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);padding:14px 20px 14px 0;border-bottom:1px solid var(--rule)}
+.clients td{padding:14px 20px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.clients td:first-child{font-weight:700;width:40%}
+.clients td:nth-child(2){color:var(--ink-2)}
+@media (max-width:700px){.clients thead{display:none}.clients tr{display:grid;gap:2px;padding:14px 0;border-bottom:1px solid var(--rule)}.clients td{border:0;padding:0;width:auto!important}.clients td:nth-child(2){font-size:.88rem}.clients td:nth-child(3){color:var(--brand);font-size:.9rem;font-weight:600;margin-top:4px}}
+.person .mail{font-size:.9rem;color:var(--ink-2);word-break:break-all}
+</style>
+
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="RB Audit Italia, torna all'inizio"><img class="logo" src="logo.svg" alt="RB Audit Italia" width="1003" height="350"></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Navigazione principale">
+      <a href="#chisiamo">Chi siamo</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#settori">Settori</a>
+      <a href="#clienti">Clienti</a>
+      <a href="#team">Team</a>
+      <a href="#dove">Dove siamo</a>
+      <a class="btn" href="#contatti">Richiedi un incontro</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="label">Audit · Compliance · Organization · Transactions</p>
+        <h1>Dalla verifica delle informazioni alla <em>creazione di valore</em>.</h1>
+        <p class="lead">Una compagine professionale che accompagna le imprese verso trasparenza, affidabilità e crescita organizzativa, con le competenze maturate nelle grandi realtà internazionali dell'audit e della consulenza.</p>
+        <div class="ctas">
+          <a class="btn" href="#contatti">Fissa un appuntamento</a>
+          <a class="btn ghost" href="#servizi">Scopri i servizi</a>
+        </div>
+      </div>
+      <div class="mosaic" aria-hidden="true">
+        <i></i><i></i><i></i><i class="c3"></i><i></i>
+        <i></i><i></i><i class="c2"></i><i></i><i class="c4"></i>
+        <i></i><i class="c1"></i><i class="c5"></i><i class="c5"></i><i class="c3"></i>
+        <i class="c2"></i><i class="c5"></i><div class="tile"><b>Quattro aree di intervento</b><span>Audit &amp; Assurance · Compliance &amp; Risk · Organization · Transactions</span></div>
+        <i class="c4"></i><i class="c1"></i>
+      </div>
+    </div>
+  </section>
+
+  <section id="chisiamo">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">La nostra società</p><h2>Un mandato qualificato, al servizio della crescita.</h2></div>
+      </div>
+      <div class="about">
+        <p class="quote">RB Audit Italia assicura alle imprese clienti un supporto esperto allo sviluppo della trasparenza, dell'affidabilità e della crescita organizzativa.</p>
+        <div>
+          <p>Lavoriamo con team specializzati e multidisciplinari. Quasi tutti i nostri professionisti provengono da importanti esperienze nelle multinazionali dell'audit e della consulenza, e questa integrazione di culture ed esperienze è il tratto distintivo della società.</p>
+          <p>La focalizzazione su settori di business diversi e l'aggiornamento professionale costante danno forma al nostro approccio e alle nostre metodologie. Con una presenza locale e una struttura di rete flessibile, offriamo a ogni cliente un servizio personalizzato con standard tecnici da leader globale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servizi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Cosa facciamo</p><h2>Quattro aree, un unico standard di qualità.</h2></div>
+        <p class="lead">Una gamma ampia di servizi centrati sulla qualità, organizzata nelle nostre principali aree di intervento. Apri ogni area per il dettaglio delle attività.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <div class="sq" aria-hidden="true"><i style="background:var(--brand)"></i></div>
+          <p class="ref">Affidabilità delle informazioni e dei controlli</p>
+          <h3>Audit &amp; Assurance</h3>
+          <p>La qualità delle informazioni è essenziale per decidere in modo consapevole. Supportiamo le aziende nell'affidabilità dell'informazione economico-finanziaria, dei processi e dei sistemi di controllo interno.</p>
+          <ul><li>Revisione legale e finanziaria</li><li>Assurance</li><li>Internal audit</li><li>Analisi dei processi amministrativo-contabili</li></ul>
+          <details class="more"><summary>Dettaglio dei servizi</summary>
+            <p class="sub">Revisione legale</p>
+            <ul><li>Controllo legale dei conti ex D.Lgs. 39/2010 e art. 2409-bis c.c. su bilanci d'esercizio e consolidati, con le verifiche periodiche sulla regolare tenuta della contabilità</li><li>Revisione volontaria di bilanci, situazioni contabili infrannuali e relazioni semestrali, per fini informativi interni ed esterni</li><li>Pareri e valutazioni sulla correttezza di operazioni finanziarie</li><li>Studio e valutazione del sistema di controllo interno</li><li>Pareri di congruità su rapporti di concambio e prezzi di sottoscrizione di nuove quote o azioni</li><li>Verifiche contabili di progetti finanziati o incentivati con fondi pubblici</li></ul>
+            <p class="sub">Organizzazione amministrativo-contabile</p>
+            <ul><li>Assistenza nella soluzione di problematiche tecniche contabili</li><li>Assistenza nella redazione di bilanci consolidati e secondo i principi contabili internazionali</li><li>Progettazione o adeguamento di procedure contabili, gestionali e sistemi di controllo interno</li><li>Progettazione o adeguamento di piani dei conti, mansionari e manuali contabili</li><li>Organizzazione della contabilità economico-patrimoniale negli enti pubblici</li></ul>
+          </details>
+        </article>
+        <article class="svc">
+          <div class="sq" aria-hidden="true"><i style="background:var(--brand)"></i><i style="background:var(--cyan)"></i></div>
+          <p class="ref">D.Lgs. 231/2001 · ERM · ESG</p>
+          <h3>Compliance &amp; Risk Management</h3>
+          <p>La compliance non è solo un obbligo: protegge l'azienda, migliora i processi e rafforza la fiducia degli stakeholder. Aiutiamo a gestire i rischi di non conformità e a costruire sistemi di controllo coerenti.</p>
+          <ul><li>Modelli di gestione D.Lgs. 231/2001</li><li>Compliance aziendale</li><li>ERM – Enterprise Risk Management</li><li>ESG e sostenibilità</li></ul>
+          <details class="more"><summary>Dettaglio dei servizi</summary>
+            <p class="sub">Risk management</p>
+            <ul><li>Control governance: assistenza al Consiglio di amministrazione e all'alta direzione nell'identificazione di rischi e controlli</li><li>Documentazione e verifica dei sistemi di controllo interno</li><li>Sviluppo della funzione di internal audit in azienda</li><li>Internal audit in outsourcing</li></ul>
+            <p class="sub">Compliance per enti non profit</p>
+            <ul><li>Redazione e modifica di atti costitutivi, statuti e regolamenti</li><li>Impostazione giuridica e fiscale dell'ente in fase costitutiva e negli adempimenti ordinari</li><li>Assistenza nell'iter di riconoscimento della personalità giuridica</li><li>Adempimenti tributari, dichiarativi e comunicazioni fiscali</li><li>Check-up e due diligence fiscale</li></ul>
+          </details>
+        </article>
+        <article class="svc">
+          <div class="sq" aria-hidden="true"><i style="background:var(--brand)"></i><i style="background:var(--cyan)"></i><i style="background:var(--sky)"></i></div>
+          <p class="ref">Processi · Ruoli · Governance</p>
+          <h3>Organization &amp; Performance</h3>
+          <p>Organizzare meglio per performare meglio. Aiutiamo a costruire organizzazioni più trasparenti, efficienti e governabili, integrando struttura, processi, responsabilità e sistemi di controllo.</p>
+          <ul><li>Assessment organizzativo</li><li>Design del modello organizzativo</li><li>Organigrammi e funzionigrammi</li><li>Procedure e sistemi operativi</li></ul>
+          <details class="more"><summary>Dettaglio dei servizi</summary>
+            <dl class="defs">
+              <dt>Assessment organizzativo</dt><dd>Analizziamo la struttura formale e il funzionamento reale dell'organizzazione, con una fotografia di punti di forza, criticità e priorità di intervento.</dd>
+              <dt>Design organizzativo</dt><dd>Progettiamo o rivediamo il modello organizzativo perché sia coerente con dimensioni, attività, complessità e strategia dell'azienda.</dd>
+              <dt>Organigrammi e funzionigrammi</dt><dd>Rendiamo visibili ruoli, responsabilità e relazioni: organigrammi, job description, matrici delle responsabilità, sistemi di deleghe e di riporto.</dd>
+              <dt>Procedure e sistemi operativi</dt><dd>Formalizziamo procedure e istruzioni operative in un sistema condiviso di policy, manuali e protocolli.</dd>
+            </dl>
+          </details>
+        </article>
+        <article class="svc">
+          <div class="sq" aria-hidden="true"><i style="background:var(--brand)"></i><i style="background:var(--cyan)"></i><i style="background:var(--sky)"></i><i style="background:var(--mist)"></i></div>
+          <p class="ref">Operazioni straordinarie · M&amp;A</p>
+          <h3>Transactions</h3>
+          <p>Informazioni più solide per decisioni più consapevoli. Nelle operazioni straordinarie aiutiamo i clienti a comprendere la reale situazione economica, finanziaria e operativa dell'azienda target.</p>
+          <ul><li>Financial due diligence</li><li>Acquisizioni e dismissioni</li><li>Supporto pre e post transaction</li><li>Due diligence fiscale e legale</li></ul>
+          <details class="more"><summary>Dettaglio dei servizi</summary>
+            <p>Interveniamo nell'identificazione del target, nella valutazione dei suoi punti di forza e di debolezza, nel processo di due diligence e nella preparazione dei risultati per la negoziazione.</p>
+            <p class="sub">Financial due diligence</p>
+            <ul><li>Analisi dei risultati operativi, del bilancio e del cash flow</li><li>Review dei fattori critici di successo e dei risultati dell'anno in corso</li><li>Analisi del budget</li><li>Identificazione di passività potenziali</li></ul>
+            <p class="sub">Due diligence fiscale</p>
+            <ul><li>Identificazione dei rischi fiscali e delle relative passività potenziali</li><li>Analisi della struttura ottimale dal punto di vista fiscale</li></ul>
+            <p class="sub">Due diligence legale</p>
+            <ul><li>Analisi dei contratti e degli impegni esistenti</li><li>Identificazione delle passività potenziali</li></ul>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="perche">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Perché sceglierci</p><h2>Esperienza internazionale, servizio su misura.</h2></div>
+        <p class="lead">Il metodo delle grandi società di revisione, con il rapporto diretto di una struttura vicina al cliente.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item"><div class="ic" aria-hidden="true"><i style="background:var(--cyan)"></i><i></i><i></i><i style="background:var(--sky)"></i></div><p class="k">Professionisti dalle multinazionali</p><p>Quasi tutto il team proviene da importanti esperienze nelle multinazionali dell'audit e della consulenza.</p></div>
+        <div class="why-item"><div class="ic" aria-hidden="true"><i></i><i style="background:var(--cyan)"></i><i style="background:var(--sky)"></i><i></i></div><p class="k">Team multidisciplinari</p><p>Revisori, consulenti organizzativi ed esperti di compliance integrano culture ed esperienze diverse su ogni incarico.</p></div>
+        <div class="why-item"><div class="ic" aria-hidden="true"><i style="background:var(--sky)"></i><i style="background:var(--cyan)"></i><i></i><i></i></div><p class="k">Presenza locale, struttura flessibile</p><p>Una sede a Roma e un'organizzazione snella, che garantisce a ogni cliente un servizio personalizzato e tempi di risposta rapidi.</p></div>
+        <div class="why-item"><div class="ic" aria-hidden="true"><i></i><i></i><i style="background:var(--sky)"></i><i style="background:var(--cyan)"></i></div><p class="k">Aggiornamento costante</p><p>Focalizzazione su settori diversi e formazione continua sulle normative in evoluzione.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="settori">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Settori in cui operiamo</p><h2>Esperienza in quasi ogni comparto.</h2></div>
+        <p class="lead">Dalle imprese industriali alla finanza, dal settore pubblico al terzo settore: i nostri professionisti hanno sviluppato competenze specialistiche in molti ambiti.</p>
+      </div>
+      <ul class="sectors">
+        <li>Immobiliare</li><li>Manifatturiero</li><li>Costruzioni e ingegneria</li><li>Assicurazioni, banche e finanza</li><li>Fondi di previdenza integrativa</li><li>Fondi di private equity</li><li>Società di servizi professionali</li><li>Terziario avanzato</li><li>Automotive</li><li>Energia e utility</li><li>Petrolchimico</li><li>Telecomunicazioni</li><li>Istituzioni internazionali</li><li>Terzo settore</li><li>Pubblica amministrazione</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="clienti">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Track record</p><h2>Alcuni dei nostri clienti.</h2></div>
+        <p class="lead">Una solida esperienza maturata con imprese, enti pubblici, fondazioni e istituzioni, anche internazionali.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Filtra per attività">
+        <button type="button" class="chip" data-f="all" aria-pressed="true">Tutti <span></span></button>
+        <button type="button" class="chip" data-f="rev" aria-pressed="false">Revisione <span></span></button>
+        <button type="button" class="chip" data-f="comp" aria-pressed="false">Modelli e compliance <span></span></button>
+        <button type="button" class="chip" data-f="org" aria-pressed="false">Organizzazione <span></span></button>
+        <button type="button" class="chip" data-f="an" aria-pressed="false">Analisi e rendicontazione <span></span></button>
+      </div>
+      <div class="clients-wrap">
+        <table class="clients">
+          <thead><tr><th scope="col">Cliente</th><th scope="col">Settore</th><th scope="col">Attività</th></tr></thead>
+          <tbody>
+            <tr data-c="rev"><td>Santa Sede</td><td>Istituzione Stato Città del Vaticano</td><td>Revisione contabile del bilancio consolidato</td></tr>
+            <tr data-c="rev"><td>Governatorato dello Stato della Città del Vaticano</td><td>Ente Stato Città del Vaticano</td><td>Revisione contabile del bilancio statale</td></tr>
+            <tr data-c="rev"><td>Ordine Equestre del Santo Sepolcro di Gerusalemme</td><td>Istituzione Stato Città del Vaticano</td><td>Revisione contabile</td></tr>
+            <tr data-c="org"><td>PACS – Pontificia Commissione di Archeologia Sacra</td><td>Organismo Stato Città del Vaticano</td><td>Organizzazione e assistenza al controllo interno</td></tr>
+            <tr data-c="rev"><td>Mexedia S.p.A. SB</td><td>Telecomunicazioni</td><td>Revisione legale – quotazione alla Borsa di Parigi</td></tr>
+            <tr data-c="rev"><td>Mahindra Europe S.r.l.</td><td>Distribuzione veicoli commerciali</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>Roma TPL – Trasporto Pubblico Locale</td><td>Servizi di mobilità</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>CAR – Centro Agroalimentare di Roma</td><td>Mercato ortofrutticolo – Comune di Roma</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>Fondo Scuola Espero</td><td>Fondo pensione complementare</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>Pietro Coricelli S.p.A.</td><td>Produzione industriale olio</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>Gruppo Novelli S.p.A.</td><td>Produzione industriale alimentare</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>Capecchi S.p.A.</td><td>Distribuzione alimentare</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>F.A.E. Costruzioni S.p.A.</td><td>Costruzioni immobiliari</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>Romabitumi S.r.l.</td><td>Commercio prodotti petroliferi</td><td>Revisione legale</td></tr>
+            <tr data-c="rev"><td>Easy Box Limited</td><td>Servizi di storage</td><td>Revisione contabile</td></tr>
+            <tr data-c="comp"><td>Fondazione Nazionale delle Comunicazioni</td><td>Fondazione bancaria</td><td>Modello gestionale</td></tr>
+            <tr data-c="comp"><td>Capitale Lavoro S.p.A. – Città Metropolitana di Roma Capitale</td><td>Società pubblica di project management</td><td>Modello gestionale</td></tr>
+            <tr data-c="org"><td>Capitale Lavoro S.p.A. – Città Metropolitana di Roma Capitale</td><td>Società pubblica di project management</td><td>Modello organizzativo e manuale delle procedure</td></tr>
+            <tr data-c="comp"><td>RAVO S.p.A.</td><td>Servizi ambientali</td><td>Modello gestionale</td></tr>
+            <tr data-c="comp"><td>Fondazione Rome Technopole</td><td>Fondazione pubblica</td><td>Compliance – mappatura e monitoraggio normativo</td></tr>
+            <tr data-c="org"><td>COOP OSA – Operatori Sociali Associati</td><td>Servizi sanitari</td><td>Modello organizzativo e sistema di controllo</td></tr>
+            <tr data-c="org"><td>Comune di Civitavecchia</td><td>Ente pubblico locale</td><td>Assessment del modello organizzativo</td></tr>
+            <tr data-c="an"><td>Università degli Studi di Napoli Federico II</td><td>Università statale</td><td>Progetto UE Horizon 2020 – rendicontazione CFS</td></tr>
+            <tr data-c="an"><td>UNAPA S.c.r.l.</td><td>Associazione produttori agricoli</td><td>Progetto UE – rendicontazione CFS</td></tr>
+            <tr data-c="an"><td>GESCO – Consorzio di cooperative sociali</td><td>Servizi sanitari</td><td>Indagine economico-finanziaria</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Team</p><h2>I soci fondatori.</h2></div>
+        <p class="lead">Tre partner che seguono direttamente gli incarichi, affiancati da team specializzati per area.</p>
+      </div>
+      <div class="team">
+        <article class="person"><div class="avatar" aria-hidden="true">RM</div><p class="role">Founder Partner</p><h3>Roberto Mallardo</h3><p class="mail" id="m1">roberto.mallardo@rbaudit.it</p><button class="linkish" data-copy="m1" type="button">Copia e-mail</button></article>
+        <article class="person"><div class="avatar" aria-hidden="true">RC</div><p class="role">Founder Partner</p><h3>Roberto Cadoni</h3><p class="mail" id="m2">roberto.cadoni@rbaudit.it</p><button class="linkish" data-copy="m2" type="button">Copia e-mail</button></article>
+        <article class="person"><div class="avatar" aria-hidden="true">SC</div><p class="role">Founder Partner</p><h3>Salvatore Colitta</h3><p class="mail" id="m3">salvatore.colitta@rbaudit.it</p><button class="linkish" data-copy="m3" type="button">Copia e-mail</button></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Domande frequenti</p><h2>Prima di iniziare.</h2></div>
+      </div>
+      <div class="faq">
+        <details open><summary>Quando una società è obbligata alla revisione legale?</summary><p>Le società per azioni lo sono sempre. Le S.r.l. diventano obbligate quando sono tenute al bilancio consolidato, controllano una società soggetta a revisione o superano per due esercizi consecutivi almeno uno dei limiti previsti dall'art. 2477 del Codice civile su attivo, ricavi e dipendenti. Ti aiutiamo a verificare la tua situazione.</p></details>
+        <details><summary>Che differenza c'è tra revisione legale e revisione volontaria?</summary><p>La revisione legale è imposta dalla legge e si conclude con una relazione depositata insieme al bilancio. La revisione volontaria è scelta dall'impresa, ad esempio per presentarsi a banche, investitori o potenziali acquirenti con dati verificati, o per controllare situazioni infrannuali e semestrali.</p></details>
+        <details><summary>Che cos'è un modello 231 e a chi serve?</summary><p>È il modello di organizzazione, gestione e controllo previsto dal D.Lgs. 231/2001. Se adottato ed efficacemente attuato, può escludere o ridurre la responsabilità dell'ente per alcuni reati commessi nel suo interesse. Lo predisponiamo partendo da una mappatura dei rischi specifica della tua organizzazione.</p></details>
+        <details><summary>Lavorate anche con enti pubblici e organizzazioni non profit?</summary><p>Sì. Tra i nostri clienti ci sono enti locali, università, fondazioni, cooperative sociali e istituzioni dello Stato della Città del Vaticano. Per gli enti non profit seguiamo anche statuti, inquadramento giuridico e fiscale e adempimenti tributari; per i progetti finanziati con fondi pubblici o europei curiamo verifiche e rendicontazione.</p></details>
+        <details><summary>Potete affiancarci in un'acquisizione?</summary><p>Sì. Supportiamo l'identificazione del target, la financial due diligence, la due diligence fiscale e legale e la preparazione dei risultati per la negoziazione, prima e dopo la chiusura dell'operazione.</p></details>
+        <details><summary>Come si svolge il primo incontro?</summary><p>Ci incontriamo nel nostro studio all'EUR o in videochiamata. Ascoltiamo le tue esigenze, raccogliamo le informazioni essenziali sulla società e ti inviamo una proposta di incarico chiara su attività, tempi e costi.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contatti">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Contattaci</p><h2>Vuoi saperne di più?</h2></div>
+        <p class="lead">Lasciaci i tuoi recapiti: ti richiamiamo per fissare un incontro con uno dei nostri professionisti.</p>
+      </div>
+      <div class="contact-grid" id="dove">
+        <form class="card" id="contactForm" novalidate>
+          <div class="field"><label for="f-nome">Nome e cognome</label><input id="f-nome" name="nome" autocomplete="name" required></div>
+          <div class="two">
+            <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-tel">Telefono</label><input id="f-tel" name="tel" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field"><label for="f-area">Area di interesse</label>
+            <select id="f-area" name="area"><option>Audit &amp; Assurance</option><option>Compliance &amp; Risk Management</option><option>Organization &amp; Performance</option><option>Transactions</option><option>Altro</option></select></div>
+          <div class="field"><label for="f-msg">Messaggio (facoltativo)</label><textarea id="f-msg" name="msg" rows="4"></textarea></div>
+          <label class="check" for="f-privacy"><input id="f-privacy" type="checkbox" required><span>Ho letto e accetto l'<a href="https://www.rbaudit.it/privacy" target="_blank" rel="noopener">informativa sulla privacy</a>.</span></label>
+          <p class="err" id="formErr" hidden></p>
+          <button class="btn" type="submit" style="justify-self:start">Invia richiesta</button>
+          <p class="done" id="formDone" hidden>Grazie per averci contattato. Ti risponderemo il prima possibile.</p>
+        </form>
+        <div class="info">
+          <div class="item"><p class="label">Chiamaci</p><p class="big" id="tel">+39 06 9314 755</p><small>Lunedì–venerdì, dalle 9 alle 17</small><button class="linkish" data-copy="tel" type="button">Copia numero</button></div>
+          <div class="item"><p class="label">Scrivici</p><p class="big" id="mail">infosegreteria@rbaudit.it</p><small>Per informazioni e domande di carattere generale</small><button class="linkish" data-copy="mail" type="button">Copia indirizzo</button></div>
+          <div class="item"><p class="label">Vieni a trovarci</p><p class="big">Via Nairobi, 40<br>00144 Roma EUR</p><a class="linkish" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Nairobi+40+00144+Roma" target="_blank" rel="noopener">Indicazioni stradali ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><img class="logo" src="logo.svg" alt="RB Audit Italia" width="1003" height="350"><p style="margin-top:16px">Revisione ed organizzazione contabile</p></div>
+    <div><p>Via Nairobi, 40 · 00144 Roma EUR</p><p>infosegreteria@rbaudit.it</p><p>+39 06 9314 755</p></div>
+    <div><p class="legal">RB Audit Italia S.r.l.</p><p class="legal">C.F. e P.IVA 08110871004</p><p class="legal">Registro imprese di Roma n. 1074534</p><p style="margin-top:14px"><a href="https://www.rbaudit.it/privacy" target="_blank" rel="noopener">Informativa privacy</a></p></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'Chiudi':'Menu';});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'&&nav.classList.contains('open')){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu';}});
+
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.dataset.copy),t=el.textContent.trim(),orig=b.textContent;
+      function sel(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+      try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copiato';setTimeout(function(){b.textContent=orig},1600)},sel);}catch(e){sel();}
+    });
+  });
+
+  var f=document.getElementById('contactForm'),err=document.getElementById('formErr'),done=document.getElementById('formDone');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();err.hidden=true;
+    var n=f.nome.value.trim(),m=f.email.value.trim(),p=document.getElementById('f-privacy').checked;
+    var msg=!n?'Inserisci nome e cognome.':!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)?'Inserisci un indirizzo e-mail valido.':!p?'Per inviare la richiesta accetta l\'informativa sulla privacy.':'';
+    if(msg){err.textContent=msg;err.hidden=false;return;}
+    done.hidden=false;f.querySelector('button[type=submit]').disabled=true;
+  });
+
+  var chips=document.querySelectorAll('.chip'),rows=document.querySelectorAll('.clients tbody tr');
+  chips.forEach(function(c){var f=c.dataset.f;c.querySelector('span').textContent=f==='all'?rows.length:document.querySelectorAll('.clients tr[data-c="'+f+'"]').length;
+    c.addEventListener('click',function(){chips.forEach(function(x){x.setAttribute('aria-pressed',x===c)});rows.forEach(function(r){r.hidden=!(f==='all'||r.dataset.c===f)});});});
+})();
+</script>
+
+</body>
+</html>
